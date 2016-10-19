@@ -1,7 +1,7 @@
 name:
   template-haskell-compat-v0208
 version:
-  0.1
+  0.1.1
 category:
   TemplateHaskell, Compatibility
 synopsis:
@@ -45,6 +45,6 @@ library
   exposed-modules:
     TemplateHaskell.Compat.V0208
   build-depends:
-    template-haskell,
-    base-prelude >= 1 && < 2,
+    template-haskell >= 2.8 && < 2.12,
+    base-prelude >= 0.1 && < 2,
     base >= 4.6 && < 5
