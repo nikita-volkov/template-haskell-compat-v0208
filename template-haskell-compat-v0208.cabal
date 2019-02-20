@@ -45,6 +45,6 @@ library
   exposed-modules:
     TemplateHaskell.Compat.V0208
   build-depends:
-    template-haskell >= 2.8 && < 2.12,
+    template-haskell >= 2.8 && < 2.15,
     base-prelude >= 0.1 && < 2,
     base >= 4.6 && < 5
