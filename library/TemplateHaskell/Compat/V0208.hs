@@ -1,7 +1,7 @@
 {-# LANGUAGE CPP #-}
 module TemplateHaskell.Compat.V0208 where
 
-import BasePrelude
+import TemplateHaskell.Compat.V0208.Prelude
 import Language.Haskell.TH
 
 
@@ -39,4 +39,13 @@ notStrict =
   unsafePerformIO (runQ (bang noSourceUnpackedness noSourceStrictness))
 #else
   NotStrict
+#endif
+
+tupE :: [Exp] -> Exp
+#if MIN_VERSION_template_haskell(2,16,0)
+tupE = \ case
+  [a] -> a
+  a -> TupE (map Just a)
+#else
+tupE = TupE
 #endif
