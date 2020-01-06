@@ -17,7 +17,6 @@ import Control.Monad.ST as Exports
 import Data.Bits as Exports
 import Data.Bool as Exports
 import Data.Char as Exports
-import Data.Coerce as Exports
 import Data.Complex as Exports
 import Data.Data as Exports
 import Data.Dynamic as Exports
