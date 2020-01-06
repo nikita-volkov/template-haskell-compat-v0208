@@ -14,7 +14,6 @@ import Control.Exception as Exports
 import Control.Monad as Exports hiding (fail, mapM_, sequence_, forM_, msum, mapM, sequence, forM)
 import Control.Monad.Fix as Exports hiding (fix)
 import Control.Monad.ST as Exports
-import Data.Bifunctor as Exports
 import Data.Bits as Exports
 import Data.Bool as Exports
 import Data.Char as Exports
@@ -27,7 +26,6 @@ import Data.Fixed as Exports
 import Data.Foldable as Exports hiding (toList)
 import Data.Function as Exports hiding (id, (.))
 import Data.Functor as Exports
-import Data.Functor.Identity as Exports
 import Data.Int as Exports
 import Data.IORef as Exports
 import Data.Ix as Exports
@@ -35,7 +33,6 @@ import Data.List as Exports hiding (sortOn, isSubsequenceOf, uncons, concat, fol
 import Data.Maybe as Exports
 import Data.Monoid as Exports hiding (Last(..), First(..), (<>))
 import Data.Ord as Exports
-import Data.Proxy as Exports
 import Data.Ratio as Exports
 import Data.STRef as Exports
 import Data.String as Exports
