@@ -23,11 +23,7 @@ instanceD =
   InstanceD
 #endif
 
-#if MIN_VERSION_template_haskell(2,17,0)
-dataD :: Cxt -> Name -> [TyVarBndr ()] -> [Con] -> [Name] -> Dec
-#else
-dataD :: Cxt -> Name -> [TyVarBndr] -> [Con] -> [Name] -> Dec
-#endif
+dataD :: Cxt -> Name -> [UnitTyVarBndr] -> [Con] -> [Name] -> Dec
 dataD cxt name varBndrs cons derivingNames =
 #if MIN_VERSION_template_haskell(2,12,0)
   DataD cxt name varBndrs Nothing cons (pure (DerivClause Nothing (map ConT derivingNames)))
@@ -52,4 +48,23 @@ tupE = \ case
   a -> TupE (map Just a)
 #else
 tupE = TupE
+#endif
+
+specifiedPlainTV :: Name -> SpecificityTyVarBndr
+#if MIN_VERSION_template_haskell(2,17,0)
+specifiedPlainTV = flip PlainTV SpecifiedSpec
+#else
+specifiedPlainTV = PlainTV
+#endif
+
+#if MIN_VERSION_template_haskell(2,17,0)
+type SpecificityTyVarBndr = TyVarBndr Specificity
+#else
+type SpecificityTyVarBndr = TyVarBndr
+#endif
+
+#if MIN_VERSION_template_haskell(2,17,0)
+type UnitTyVarBndr = TyVarBndr ()
+#else
+type UnitTyVarBndr = TyVarBndr
 #endif
