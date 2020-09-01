@@ -69,11 +69,9 @@ type UnitTyVarBndr = TyVarBndr ()
 type UnitTyVarBndr = TyVarBndr
 #endif
 
-doE, mDoE :: [Stmt] -> Exp
+doE :: [Stmt] -> Exp
 #if MIN_VERSION_template_haskell(2,17,0)
 doE = DoE Nothing
-mDoE = MDoE Nothing
 #else
 doE = DoE
-mDoE = MDoE
 #endif
