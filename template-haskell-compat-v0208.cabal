@@ -1,5 +1,5 @@
 name: template-haskell-compat-v0208
-version: 0.1.4
+version: 0.1.5
 category: TemplateHaskell, Compatibility
 synopsis: A backwards compatibility layer for Template Haskell newer than 2.8
 homepage: https://github.com/nikita-volkov/template-haskell-compat-v0208
