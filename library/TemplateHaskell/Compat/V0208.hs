@@ -36,7 +36,7 @@ dataD cxt name varBndrs cons derivingNames =
 notStrict :: Strict
 notStrict =
 #if MIN_VERSION_template_haskell(2,11,0)
-  unsafePerformIO (runQ (bang noSourceUnpackedness noSourceStrictness))
+  Bang NoSourceUnpackedness NoSourceStrictness
 #else
   NotStrict
 #endif
