@@ -75,3 +75,16 @@ doE = DoE Nothing
 #else
 doE = DoE
 #endif
+
+#if MIN_VERSION_template_haskell(2,17,0)
+tyVarBndrKind :: TyVarBndr flag -> Maybe Kind
+tyVarBndrKind = \ case
+  KindedTV _ _ a -> Just a
+  _ -> Nothing
+#else
+tyVarBndrKind :: TyVarBndr -> Maybe Kind
+tyVarBndrKind = \ case
+  KindedTV _ a -> Just a
+  _ -> Nothing
+#endif
+
