@@ -88,3 +88,9 @@ tyVarBndrKind = \ case
   _ -> Nothing
 #endif
 
+#if MIN_VERSION_template_haskell(2,18,0)
+conp :: Name -> [Pat] -> Pat
+conp name pats = ConP name [] pats
+#else
+conp = ConP
+#endif
