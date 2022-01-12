@@ -92,5 +92,6 @@ tyVarBndrKind = \ case
 conp :: Name -> [Pat] -> Pat
 conp name pats = ConP name [] pats
 #else
+conp :: Name -> [Pat] -> Pat
 conp = ConP
 #endif
