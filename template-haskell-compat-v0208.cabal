@@ -1,3 +1,5 @@
+cabal-version: 3.0
+
 name: template-haskell-compat-v0208
 version: 0.1.7
 category: TemplateHaskell, Compatibility
@@ -10,7 +12,6 @@ copyright: (c) 2016, Nikita Volkov
 license: MIT
 license-file: LICENSE
 build-type: Simple
-cabal-version: >=1.10
 
 source-repository head
   type: git
@@ -26,4 +27,4 @@ library
     TemplateHaskell.Compat.V0208.Prelude
   build-depends:
     base >=4.6 && <5,
-    template-haskell >=2.8 && <3
+    template-haskell >=2.8 && <2.19
