@@ -95,11 +95,3 @@ conp name pats = ConP name [] pats
 conp :: Name -> [Pat] -> Pat
 conp = ConP
 #endif
-
-#if MIN_VERSION_template_haskell(2,17,0)
-specifiedPlainTV :: Name -> TyVarBndr Specificity
-specifiedPlainTV name = PlainTV name SpecifiedSpec
-#else
-specifiedPlainTV :: Name -> TyVarBndr
-specifiedPlainTV = PlainTV
-#endif
