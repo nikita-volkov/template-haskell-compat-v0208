@@ -50,6 +50,13 @@ tupE = \ case
 tupE = TupE
 #endif
 
+flaglessPlainTV :: Name -> UnitTyVarBndr
+#if MIN_VERSION_template_haskell(2,17,0)
+flaglessPlainTV name = PlainTV name ()
+#else
+flaglessPlainTV = PlainTV
+#endif
+
 specifiedPlainTV :: Name -> SpecificityTyVarBndr
 #if MIN_VERSION_template_haskell(2,17,0)
 specifiedPlainTV = flip PlainTV SpecifiedSpec
