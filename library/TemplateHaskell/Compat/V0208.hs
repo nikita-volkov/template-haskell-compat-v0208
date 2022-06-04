@@ -2,7 +2,7 @@
 module TemplateHaskell.Compat.V0208 where
 
 import TemplateHaskell.Compat.V0208.Prelude
-import Language.Haskell.TH
+import Language.Haskell.TH hiding (conP)
 
 
 classP :: Name -> [Type] -> Pred
@@ -96,9 +96,13 @@ tyVarBndrKind = \ case
 #endif
 
 #if MIN_VERSION_template_haskell(2,18,0)
-conp :: Name -> [Pat] -> Pat
-conp name pats = ConP name [] pats
+conP :: Name -> [Pat] -> Pat
+conP name pats = ConP name [] pats
 #else
-conp :: Name -> [Pat] -> Pat
-conp = ConP
+conP :: Name -> [Pat] -> Pat
+conP = ConP
 #endif
+
+{-# deprecated conp "Use 'conP'" #-}
+conp :: Name -> [Pat] -> Pat
+conp = conP
