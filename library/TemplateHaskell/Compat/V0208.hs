@@ -25,7 +25,13 @@ instanceD =
 
 dataD :: Cxt -> Name -> [UnitTyVarBndr] -> [Con] -> [Name] -> Dec
 dataD cxt name varBndrs cons derivingNames =
-#if MIN_VERSION_template_haskell(2,12,0)
+#if MIN_VERSION_template_haskell(2,21,0)
+  DataD cxt name preparedVarBndrs Nothing cons (pure (DerivClause Nothing (map ConT derivingNames)))
+  where
+    preparedVarBndrs :: [TyVarBndr BndrVis]
+    preparedVarBndrs =
+      fmap (fmap (const BndrReq)) varBndrs
+#elif MIN_VERSION_template_haskell(2,12,0)
   DataD cxt name varBndrs Nothing cons (pure (DerivClause Nothing (map ConT derivingNames)))
 #elif MIN_VERSION_template_haskell(2,11,0)
   DataD cxt name varBndrs Nothing cons (map ConT derivingNames)
