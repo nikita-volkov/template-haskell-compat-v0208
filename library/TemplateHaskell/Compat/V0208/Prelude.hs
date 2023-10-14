@@ -21,7 +21,7 @@ import Data.Either as Exports
 import Data.Fixed as Exports
 import Data.Foldable as Exports hiding (toList)
 import Data.Function as Exports hiding (id, (.))
-import Data.Functor as Exports
+import Data.Functor as Exports hiding (unzip)
 import Data.IORef as Exports
 import Data.Int as Exports
 import Data.Ix as Exports

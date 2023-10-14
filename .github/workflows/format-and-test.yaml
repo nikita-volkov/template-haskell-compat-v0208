@@ -1,0 +1,19 @@
+name: Compile, test and check the docs
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+
+  format:
+    uses: nikita-volkov/haskell-hackage-lib-github-actions-workflows/.github/workflows/format.yaml@v1.1.1
+    secrets: inherit
+
+  test:
+    uses: nikita-volkov/haskell-hackage-lib-github-actions-workflows/.github/workflows/test.yaml@v1.1.1
+    secrets: inherit
+    with:
+      minimal-ghc: 8.8.1

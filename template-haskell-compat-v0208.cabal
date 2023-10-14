@@ -3,7 +3,14 @@ name:          template-haskell-compat-v0208
 version:       0.1.9.2
 category:      TemplateHaskell, Compatibility
 synopsis:
-  A backwards compatibility layer for Template Haskell newer than 2.8
+  Backward-compatibility layer for Template Haskell newer than 2.8
+
+description:
+  Collection of functions that aims to help you to write
+  Template Haskell that is compatible
+  with all versions of GHC starting from 7.6.
+  The oldest GHC serves as the common denominator here,
+  so the newer functionality is avoided here.
 
 homepage:
   https://github.com/nikita-volkov/template-haskell-compat-v0208
@@ -67,4 +74,4 @@ library
   other-modules:      TemplateHaskell.Compat.V0208.Prelude
   build-depends:
     , base >=4.6 && <5
-    , template-haskell >=2.8 && <2.21
+    , template-haskell >=2.8 && <2.22

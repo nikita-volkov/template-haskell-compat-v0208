@@ -1,9 +1,9 @@
 {-# LANGUAGE CPP #-}
+
 module TemplateHaskell.Compat.V0208 where
 
-import TemplateHaskell.Compat.V0208.Prelude
 import Language.Haskell.TH hiding (conP)
-
+import TemplateHaskell.Compat.V0208.Prelude
 
 classP :: Name -> [Type] -> Pred
 #if MIN_VERSION_template_haskell(2,10,0)
@@ -24,20 +24,30 @@ instanceD =
 #endif
 
 dataD :: Cxt -> Name -> [UnitTyVarBndr] -> [Con] -> [Name] -> Dec
+#if MIN_VERSION_template_haskell(2,21,0)
 dataD cxt name varBndrs cons derivingNames =
-#if MIN_VERSION_template_haskell(2,12,0)
+  DataD cxt name preparedVarBndrs Nothing cons (pure (DerivClause Nothing (map ConT derivingNames)))
+  where
+    preparedVarBndrs :: [TyVarBndr BndrVis]
+    preparedVarBndrs =
+      fmap (fmap (const BndrReq)) varBndrs
+#elif MIN_VERSION_template_haskell(2,12,0)
+dataD cxt name varBndrs cons derivingNames =
   DataD cxt name varBndrs Nothing cons (pure (DerivClause Nothing (map ConT derivingNames)))
 #elif MIN_VERSION_template_haskell(2,11,0)
+dataD cxt name varBndrs cons derivingNames =
   DataD cxt name varBndrs Nothing cons (map ConT derivingNames)
 #else
+dataD cxt name varBndrs cons derivingNames =
   DataD cxt name varBndrs cons derivingNames
 #endif
 
 notStrict :: Strict
-notStrict =
 #if MIN_VERSION_template_haskell(2,11,0)
+notStrict =
   Bang NoSourceUnpackedness NoSourceStrictness
 #else
+notStrict =
   NotStrict
 #endif
 
@@ -103,6 +113,6 @@ conP :: Name -> [Pat] -> Pat
 conP = ConP
 #endif
 
-{-# deprecated conp "Use 'conP'" #-}
+{-# DEPRECATED conp "Use 'conP'" #-}
 conp :: Name -> [Pat] -> Pat
 conp = conP
