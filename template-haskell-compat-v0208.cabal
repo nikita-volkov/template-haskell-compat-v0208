@@ -2,7 +2,9 @@ cabal-version: 3.0
 name:          template-haskell-compat-v0208
 version:       0.1.9.2
 category:      TemplateHaskell, Compatibility
-synopsis: Backward-compatibility layer for Template Haskell newer than 2.8
+synopsis:
+  Backward-compatibility layer for Template Haskell newer than 2.8
+
 description:
   Collection of functions that aims to help you to write
   Template Haskell that is compatible
