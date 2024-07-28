@@ -74,4 +74,4 @@ library
   other-modules:      TemplateHaskell.Compat.V0208.Prelude
   build-depends:
     , base >=4.6 && <5
-    , template-haskell >=2.8 && <2.22
+    , template-haskell >=2.8 && <2.23
